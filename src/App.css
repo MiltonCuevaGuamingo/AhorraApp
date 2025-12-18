@@ -1,18 +1,20 @@
 :root {
-  --bg: #ffffff;
+  --bg: #e5f4ed;
   --text: #111111;
-  --card: #f3f4f6;
+  --card: #d6f0e7;
   --primary: #13254e;
-  --bgcalculate: #8b8585;
+  --bgcalculate: #cdd3d4;
+  --borde: #090122;
 
 }
 
 :root.dark {
   --bg: #0b1220;
   --text: #e5e7eb;
-  --card: #111827;
+  --card: #111e3a;
   --primary: #33d5cd;
   --bgcalculate: #122442;
+  --borde: #fff;
 }
 
 * {

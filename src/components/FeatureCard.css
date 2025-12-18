@@ -1,5 +1,5 @@
 .feature-card {
-    background-color: #ffffff;
+    background-color:var(--bgcalculate);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -14,11 +14,11 @@
 
 .feature-card h3 {
     margin-bottom: 10px;
-    color: #1976d2;
+    color: #186ec4;
     text-align: center;
 }
 
 .feature-card p {
-    color: #555;
+    color:var(--text);
     line-height: 1.5;
 }
