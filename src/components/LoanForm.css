@@ -40,7 +40,7 @@
 .result {
     margin-top: 20px;
     padding: 15px;
-    background-color: #f4f4f4;
+    background-color: var(--bgcalculate);
     border-radius: 6px;
 }
 

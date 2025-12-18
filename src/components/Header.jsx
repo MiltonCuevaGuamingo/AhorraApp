@@ -1,18 +1,14 @@
 import './Header.css';
-import { useState } from 'react';
+import ChangeBack from './ChangeBack';
 
 
 function Header() {
-    const [darkMode, setDarkMode] = useState(false);
-    return (
-        <header className="header">
-            <h1 className="header-title">Cotizador de prestamos</h1>
-            <button className="header-button" onClick = { () =>
-            setDarkMode(!darkMode)}>
-            {darkMode ? 'Modo Oscuro' : "Modo Claro"}
-            </button>
-        </header>
-    );
+  return (
+    <header className="header">
+      <h1 className="header-title">Cotizador de prestamos</h1>
+      <ChangeBack />
+    </header>
+  );
 }
 
 export default Header;
