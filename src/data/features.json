@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Cálculo rápido",
+    "description": "Obtén una estimación inmediata de tu préstamo mensual."
+  },
+  {
+    "id": 2,
+    "title": "Plazos flexibles",
+    "description": "Elige entre diferentes plazos de pago según tu necesidad."
+  },
+  {
+    "id": 3,
+    "title": "Transparencia",
+    "description": "Visualiza claramente el monto total a pagar y tu cuota mensual."
+  }
+]

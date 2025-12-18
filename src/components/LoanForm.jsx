@@ -1,85 +1,72 @@
+import { useState } from 'react';
 import './LoanForm.css';
-import { useState, useEffect } from 'react';
 
-function LoanForm() {
-  const [amount, setAmount] = useState('');
-  const [months, setMonths] = useState('3');
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState('');
+function LoanForm({ onCalculate }) {
 
-  function calculateLoan() {
-    if (amount === '') return;
+    const [amount, setAmount] = useState('');
+    const [months, setMonths] = useState('3');
+    const [result, setResult] = useState(null);
 
-    const amountNumber = Number(amount);
-    const monthsNumber = Number(months);
+    function calculateLoan() {
+        const monto = Number(amount);
+        const plazo = Number(months);
 
-    const monthlyPayment = amountNumber / monthsNumber;
-    const totalPayment = amountNumber;
+        if (monto <= 0 || plazo <= 0) return;
 
-    setResult({
-      amount: amountNumber,
-      months: monthsNumber,
-      monthly: monthlyPayment,
-      total: totalPayment,
-    });
-  }
+        const pagoMensual = monto / plazo;
+        const pagoTotal = monto;
 
-  useEffect(() => {
-    if (amount === '') {
-      setResult(null);
-      setError('');
-      return;
+        setResult({
+            amount: monto,
+            months: plazo,
+            mensual: pagoMensual,
+            total: pagoTotal
+        });
+
+        onCalculate();
     }
 
-    if (Number(amount) <= 0) {
-      setError('Debes ingresar un monto mayor a 0');
-      setResult(null);
-      return;
-    }
+    return (
+        <section className="loan-form">
+            <h2>Simula tu préstamo</h2>
 
-    setError('');
-  }, [amount]);
+            <div className="form-group">
+                <label>Monto de préstamo</label>
+                <input
+                    type="number"
+                    placeholder="Ej. 2500"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                />
+            </div>
 
-  return (
-    <section className="loan-form">
-      <h2>Simula tu préstamo</h2>
+            <div className="form-group">
+                <label>Plazo de préstamo</label>
+                <select
+                    value={months}
+                    onChange={(e) => setMonths(e.target.value)}
+                >
+                    <option value="3">3 meses</option>
+                    <option value="6">6 meses</option>
+                    <option value="12">12 meses</option>
+                    <option value="24">24 meses</option>
+                </select>
+            </div>
 
-      <div className="form-group">
-        <label>Monto de préstamo</label>
-        <input
-          type="number"
-          placeholder="Ejm. 2500"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-      </div>
+            <button className="calculate-button" onClick={calculateLoan}>
+                Calcular
+            </button>
 
-      <div className="form-group">
-        <label>Plazo de préstamo</label>
-        <select value={months} onChange={(e) => setMonths(e.target.value)}>
-          <option value="3">3 meses</option>
-          <option value="6">6 meses</option>
-          <option value="12">12 meses</option>
-          <option value="24">24 meses</option>
-        </select>
-      </div>
-
-      <button className="calculate-button" onClick={calculateLoan}>
-        Calcular
-      </button>
-
-      {error && <p className="error">{error}</p>}
-
-      {result && (
-        <div className="result">
-          <p>Cantidad solicitada: ${result.amount}</p>
-          <p>Plazo: {result.months} meses</p>
-          <p>Pago mensual: ${result.monthly.toFixed(2)}</p>
-          <p>Pago total: ${result.total}</p>
-        </div>
-      )}
-    </section>
-  );
+            {result && (
+                <div className="result">
+                    <p>Cantidad solicitada: <strong>${result.amount}</strong></p>
+                    <p>Plazo: <strong>{result.months} meses</strong></p>
+                    <p>Pago mensual: <strong>${result.mensual.toFixed(2)}</strong></p>
+                    <p>Pago total: <strong>${result.total}</strong></p>
+                </div>
+            )}
+        </section>
+    );
 }
 
 export default LoanForm;
