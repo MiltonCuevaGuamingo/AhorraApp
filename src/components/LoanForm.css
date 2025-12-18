@@ -36,3 +36,11 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+}
+
